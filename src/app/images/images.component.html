@@ -1,0 +1,18 @@
+<div style="text-align: center">
+    <mat-form-field class="example-full-width">
+      <input [(ngModel)]="query" name="first" matInput placeholder="Search for images">
+    </mat-form-field>
+    <button mat-stroked-button color="primary"  (click)="searchImg(query)" >Search</button>
+</div>
+
+  <!--Display section-->
+<p *ngIf="searching">Fetching data...</p>
+
+<div class="container-fluid border-top border-bottom " *ngIf="imagesFound">
+  <div class="row justify-content-center">
+    <div class="col-sm-auto border-dark border rounded shadow ml-2 mb-2 text-center" *ngFor="let image of images">
+      <p><a href="{{image.pageURL}}"><img src="{{image.webformatURL}}" /></a></p>
+      <p>User: {{image.user}}  Views: {{image.views}}  Likes: {{image.likes}}</p>
+    </div>
+  </div>
+</div>
